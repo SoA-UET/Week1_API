@@ -1,0 +1,17 @@
+syntax = "proto3";
+package orders.v1;
+
+service OrderService {
+  rpc Create       (CreateOrderReq) returns (CreateOrderRes) {}         
+  rpc StreamStatus (StreamStatusReq) returns (stream StatusEvent) {}    
+  rpc UploadNotes  (stream Note) returns (UploadSummary) {}              
+  rpc Chat         (stream ChatMsg) returns (stream ChatMsg) {}              
+}
+
+message CreateOrderReq  { string customer_id = 1; repeated string item_ids = 2; }
+message CreateOrderRes  { string order_id = 1; }
+message StreamStatusReq { string order_id = 1; }
+message StatusEvent     { string status = 1; int64 ts = 2; }
+message Note            { string text = 1; int64 ts = 2; }
+message UploadSummary   { int32 count = 1; }
+message ChatMsg         { string from = 1; string text = 2; int64 ts = 3; }
