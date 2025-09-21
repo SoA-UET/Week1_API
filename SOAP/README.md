@@ -182,9 +182,12 @@ npm i
 Tạo WSDL stub code:
 
 1. Lấy file WSDL từ Server:
+
     ```sh
-    curl http://localhost:8080/myservice?wsdl > myservice.wsdl
+    curl http://localhost:8082/myservice?wsdl > myservice.wsdl
     ```
+
+    với `http://localhost:8082` là server address.
     
 2. Tạo stub code từ WSDL:
 

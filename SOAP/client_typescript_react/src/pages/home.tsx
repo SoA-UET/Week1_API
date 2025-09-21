@@ -3,7 +3,7 @@ import { useState } from "react";
 import { XMLParser } from "fast-xml-parser";
 
 export default function HomePage() {
-    const [endpoint, setEndpoint] = useState("http://localhost:8080/myservice");
+    const [endpoint, setEndpoint] = useState("http://localhost:8082/myservice");
     const [namespace, setNamespace] = useState("my.namespace");
     const [name, setName] = useState("");
 
