@@ -13,6 +13,6 @@ wsgi_app = WsgiApplication(application)
 
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
-    server = make_server('0.0.0.0', 8080, wsgi_app)
-    print("SOAP server running on http://localhost:8080")
+    server = make_server('127.0.0.1', 8082, wsgi_app)
+    print("SOAP server running on http://127.0.0.1:8082")
     server.serve_forever()
