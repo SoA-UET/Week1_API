@@ -1,6 +1,7 @@
 from spyne import Application, rpc, ServiceBase, Unicode
 from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
+from cors_middleware import CORSMiddleware
 
 class MyService(ServiceBase):
     @rpc(Unicode, _returns=Unicode)
@@ -10,6 +11,8 @@ class MyService(ServiceBase):
 application = Application([MyService], 'my.namespace',
     in_protocol=Soap11(), out_protocol=Soap11())
 wsgi_app = WsgiApplication(application)
+
+wsgi_app = CORSMiddleware(wsgi_app)
 
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
